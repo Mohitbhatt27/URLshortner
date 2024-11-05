@@ -1,10 +1,10 @@
 const express = require("express");
-const app = express();
-const PORT = 4000;
+const { PORT } = require("./src/config/serverConfig");
+const { APIrouter } = require("./src/routes/apiRouter");
 
-app.get("/", (req, res) => {
-  res.send("Hello World!");
-});
+const app = express();
+
+app.use("/api", APIrouter);
 
 app.listen(PORT, () => {
   console.log("Server started on PORT", PORT);
