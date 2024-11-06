@@ -42,7 +42,25 @@ const redirectUrl = async (data) => {
   }
 };
 
+const analytics = async (data) => {
+  try {
+    const response = await urlModel.findOne({
+      shortenedId: data.shortenedId,
+    });
+    if (!response) {
+      throw new Error("URL not found");
+    }
+    return {
+      visitedCount: response.visitedCount,
+    };
+  } catch (error) {
+    console.log("Something went wrong while fetching the analytics");
+    throw error;
+  }
+};
+
 module.exports = {
   shortenUrl,
   redirectUrl,
+  analytics,
 };

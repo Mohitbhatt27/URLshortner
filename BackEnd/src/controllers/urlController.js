@@ -20,7 +20,7 @@ const shortenUrl = async (req, res) => {
 const redirectUrl = async (req, res) => {
   try {
     const response = await urlService.redirectUrl({
-      shortenedId: req.body.shortenedId,
+      shortenedId: req.params.shortenedId,
     });
 
     return res.redirect(response);
@@ -30,7 +30,24 @@ const redirectUrl = async (req, res) => {
   }
 };
 
+const analytics = async (req, res) => {
+  try {
+    const response = await urlService.analytics({
+      shortenedId: req.params.shortenedId,
+    });
+
+    return res.status(StatusCodes.OK).json({
+      message: "Successfully fetched the analytics of the URL",
+      data: response,
+    });
+  } catch (error) {
+    console.log("Something went wrong", error.message);
+    throw error;
+  }
+};
+
 module.exports = {
   shortenUrl,
   redirectUrl,
+  analytics,
 };
