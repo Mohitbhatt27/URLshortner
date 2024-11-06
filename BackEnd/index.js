@@ -13,11 +13,11 @@ app.use(bodyParser.json());
 
 app.use(express.static("frontend_dist"));
 
+app.use("/api", APIrouter);
+
 app.get("*", (req, res) => {
   res.sendFile(path.resolve(__dirname, "frontend_dist", "index.html"));
 });
-
-app.use("/api", APIrouter);
 
 app.listen(PORT, () => {
   console.log("Server started on PORT", PORT);
