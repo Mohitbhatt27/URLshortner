@@ -16,7 +16,6 @@ const shortenUrl = async (req, res) => {
     throw error;
   }
 };
-
 const redirectUrl = async (req, res) => {
   try {
     const response = await urlService.redirectUrl({
