@@ -17,6 +17,20 @@ const shortenUrl = async (req, res) => {
   }
 };
 
+const redirectUrl = async (req, res) => {
+  try {
+    const response = await urlService.redirectUrl({
+      shortenedId: req.body.shortenedId,
+    });
+
+    return res.redirect(response);
+  } catch (error) {
+    console.log("Something went wrong", error.message);
+    throw error;
+  }
+};
+
 module.exports = {
   shortenUrl,
+  redirectUrl,
 };

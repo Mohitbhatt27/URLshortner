@@ -6,6 +6,7 @@ urlRouter.get("/", (req, res) => {
   res.send("url router working");
 });
 
-urlRouter.post("/", urlController.shortenUrl);
+urlRouter.post("/shorten", urlController.shortenUrl);
+urlRouter.post("/redirect", urlController.redirectUrl);
 
 module.exports = urlRouter;
