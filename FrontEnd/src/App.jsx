@@ -17,7 +17,7 @@ function App() {
     try {
       const response = await AxiosInstance.post("/shorten", { url });
       setShortenedUrl(
-        `https://shortenurl-fve8bkcxcmdzehfj.canadacentral-01.azurewebsites.net/api/v1/url/redirect/${response.data?.data?.shortenedId}`
+        `https://urlshortner-dvwy.onrender.com/api/v1/url/redirect/${response.data?.data?.shortenedId}`
       );
       setUrl("");
       setCopySuccess("");
